@@ -57,6 +57,7 @@ function galleryService($q, $log, $http, authService){
       $log.log('gallery has been found : ', + res.data);
     //why set service.galleries as the res.data? why not pass res.data right along to the user??
       service.galleries = res.data;
+      $log.log(service.galleries);
       return service.galleries;
     })
     .catch(err => {
