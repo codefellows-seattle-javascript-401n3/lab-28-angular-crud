@@ -1,12 +1,12 @@
 <section class="home">
   <h2>Welcome!</h2>
 
-  <create-gallery><create-gallery>
+  <create-gallery></create-gallery>
     <ul>
       <li ng-repeat="gallery in homeCtrl.galleries">
-        <span>{{gallery.name}}</span>
-        <span>Description: {{gallery.desc}}</span>
-        <span>Id: {{gallery._id}}</span>
+        <p>{{gallery.name}}</p>
+        <p>Description: {{gallery.desc}}</p>
+        <p>Id: {{gallery._id}}</p>
       </li>
     </ul>
 </section>

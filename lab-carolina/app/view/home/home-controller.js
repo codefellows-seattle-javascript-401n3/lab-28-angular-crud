@@ -9,17 +9,17 @@ function HomeController($log, $rootScope, galleryService) {
 
   this.galleries = [];
 
-  this.getGalleries = function(){
-    galleryService.getGalleries()
+  this.fetchGalleries = function(){
+    galleryService.fetchGalleries()
     .then( galleries => {
       this.galleries = galleries;
     });
   };
 
-  this.getGalleries();
+  this.fetchGalleries();
 
   $rootScope.$on('$locationChangeSuccess', () => {
-    this.getGalleries();
+    this.fetchGalleries();
   });
 
 }
