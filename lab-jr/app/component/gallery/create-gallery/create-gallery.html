@@ -1,5 +1,5 @@
 <section  class="create-gallery">
-  <form name="createGalleryForm" ng-submit="createGalleryCtrl.createGallery">
+  <form name="createGalleryForm" ng-submit="createGalleryCtrl.createGallery()">
     <fieldset>
       <label for="name">name of your gallery - added as a property on the gallery object being created by ngModel?</label>
       <input name="name" type="text" ng-model="createGalleryCtrl.gallery.name" required>

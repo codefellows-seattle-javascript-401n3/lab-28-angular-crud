@@ -18,7 +18,7 @@ function routerConfig($stateProvider, $urlRouterProvider) {
     },
     {
       name: 'landing',
-      url: '/landing',
+      url: '/join',
       template: require('../view/landing/landing.html'),
       controller: 'LandingController',
       controllerAs: 'landingCtrl'
