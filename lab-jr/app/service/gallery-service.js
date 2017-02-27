@@ -41,7 +41,7 @@ function galleryService($q, $log, $http, authService){
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/app/gallery`,
+      let url = `${__API_URL__}/app/gallery`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -66,9 +66,9 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
-  service.deleteGallery = function(){
-
-  }
+  // service.deleteGallery = function(){
+  //
+  // };
 
   return service;
 }
