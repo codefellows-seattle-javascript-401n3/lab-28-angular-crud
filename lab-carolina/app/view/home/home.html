@@ -6,7 +6,6 @@
       <li ng-repeat="gallery in homeCtrl.galleries">
         <p>{{gallery.name}}</p>
         <p>Description: {{gallery.desc}}</p>
-        <p>Id: {{gallery._id}}</p>
         <button ng-click='homeCtrl.deleteGallery(gallery._id)'>Delete Gallery</button>
       </li>
     </ul>
