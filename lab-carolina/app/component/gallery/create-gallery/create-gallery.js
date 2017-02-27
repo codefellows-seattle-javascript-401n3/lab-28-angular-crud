@@ -3,7 +3,7 @@
 module.exports = {
   template: require('./create-gallery.html'),
   controller: ['$log', 'galleryService', CreateGalleryController],
-  controllerAh: 'createGalleryCtrl',
+  controllerAs: 'createGalleryCtrl',
 };
 
 function CreateGalleryController($log, galleryService) {
