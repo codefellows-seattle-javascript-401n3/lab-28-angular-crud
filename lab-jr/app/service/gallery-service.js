@@ -66,9 +66,37 @@ function galleryService($q, $log, $http, authService){
     });
   };
 
-  // service.deleteGallery = function(){
-  //
-  // };
+  service.deleteGallery = function(galleryId){
+    $log.debug('galleryService.updateGallery -> deleteGallery - singular');
+
+    return authService.getToken()
+    .then(token => {
+      let url = `${__API_URL__}/api/gallery/${galleryId}`;
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      return $http.delete(url, config);
+    })
+    .then( () => {
+      //update gallery in galleries array on service.
+      service.fetchGalleries();
+    })
+    .catch(err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+
+    // service.updateGallery = function(galleryId){
+    //   $log.debug('galleryService.updateGallery()');
+    //
+    //   return authService.getToken()
+    //   .then(token => {
+    //     let url = `${__API_URL__}/api/gallery${galleryId}`
+    //   })
+    // }
+  };
 
   return service;
 }
