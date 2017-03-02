@@ -3,10 +3,6 @@
 
   <create-gallery></create-gallery>
     <ul>
-      <li ng-repeat="gallery in homeCtrl.galleries">
-        <p>{{gallery.name}}</p>
-        <p>Description: {{gallery.desc}}</p>
-        <button ng-click='homeCtrl.deleteGallery(gallery._id)'>Delete Gallery</button>
-      </li>
+      <gallery-item ng-repeat="item in homeCtrl.galleries" gallery="item"> </gallery-item>
     </ul>
 </section>
