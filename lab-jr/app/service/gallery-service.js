@@ -54,7 +54,7 @@ function galleryService($q, $log, $http, authService){
     //the object that is returned is res.data which is whatever the user has access to/has created once logged in.  in this case, it's a gallery.
 
     .then( res => {
-      $log.log('gallery has been found : ', + res.data);
+      $log.log('gallery has been found : ', res.data);
     //why set service.galleries as the res.data? why not pass res.data right along to the user??
       service.galleries = res.data;
       $log.log(service.galleries);
@@ -74,6 +74,7 @@ function galleryService($q, $log, $http, authService){
       let url = `${__API_URL__}/api/gallery/${galleryId}`;
       let config = {
         headers: {
+          Accept: 'application/json',
           Authorization: `Bearer ${token}`
         }
       };
@@ -81,7 +82,10 @@ function galleryService($q, $log, $http, authService){
     })
     .then( () => {
       //update gallery in galleries array on service.
-      service.fetchGalleries();
+      service.galleries = service.galleries.filter(function(gallery) {
+        if(gallery != galleryId) return gallery;
+      });
+      // service.fetchGalleries();
     })
     .catch(err => {
       $log.error(err.message);

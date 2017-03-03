@@ -16,6 +16,6 @@ function EditGalleryController($log, galleryService){
   this.updateGallery = function(){
     galleryService.updateGallery(this.gallery._id, this.gallery);
 
-  //find a way to update the model through the controller-shared galleryService method (.updateGallery grabs values from the input fields) 
+  //find a way to update the model through the controller-shared galleryService method (.updateGallery grabs values from the input fields)
   };
 }
