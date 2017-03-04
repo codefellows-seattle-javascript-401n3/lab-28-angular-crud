@@ -30,12 +30,12 @@ function picService($q, $log, Upload, authService) {
     })
     .then( res => {
       galleryData.pics.unshift(res.data);
-      $log.log('success',res.data);
+      $log.log('success', res.data);
       return res.data;
     })
     .catch(err => {
       $log.error(err.message);
-      return $q.error;
+      return $q.reject(err);
     });
   };
 
