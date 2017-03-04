@@ -82,9 +82,14 @@ function galleryService($q, $log, $http, authService){
     })
     .then( () => {
       //update gallery in galleries array on service.
-      service.galleries = service.galleries.filter(function(gallery) {
-        if(gallery != galleryId) return gallery;
-      });
+      // service.galleries = service.galleries.filter(function(gallery) {
+      //   if(gallery != galleryId) return gallery;
+      // }); <-- doesn't work. creates new array, but doesnt modify the EXISTING array. using splice would after iterating through the array would work.
+      for(let i = 0; i < service.galleries.length; i++) {
+        if(service.galleries[i]._id === galleryId) {
+          service.galleries.splice(i,1);
+        }
+      }
       // service.fetchGalleries();
     })
     .catch(err => {
@@ -106,10 +111,10 @@ function galleryService($q, $log, $http, authService){
           'Content-Type': 'application/json'
         }
       };
-      return $http.put(url, config, updatedGallery);
+      return $http.put(url, updatedGallery, config);
     })
     .then(() => {
-      authService.fetchGalleries();
+      service.fetchGalleries();
     })
     .catch(err => {
       $log.error(err.message);
