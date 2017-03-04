@@ -10,11 +10,14 @@ module.exports = {
 };
 
 function GalleryPartialController($log, galleryService){
-  $log.debug('init galleryPartialCtrl');
-  console.log(this.gallery, ' => this.gallery will be passed in as an element');
+  this.$onInit = () => {
 
-  this.deleteGallery = function(){
-    console.log(this.gallery, ' = this.gallery', this.gallery._id, ' = this.gallery._id');
-    galleryService.deleteGallery(this.gallery._id);
+    $log.debug('init galleryPartialCtrl');
+    console.log(this.gallery, ' => this.gallery will be passed in as an element');
+
+    this.deleteGallery = function(){
+      console.log(this.gallery, ' = this.gallery', this.gallery._id, ' = this.gallery._id');
+      galleryService.deleteGallery(this.gallery._id);
+    };
   };
 }

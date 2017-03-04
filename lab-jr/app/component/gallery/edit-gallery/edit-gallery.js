@@ -10,12 +10,15 @@ module.exports = {
 };
 
 function EditGalleryController($log, galleryService){
-  $log.debug('EditGalleryController');
-  console.log(this.gallery._id, ' = this.gallery._id');
+  this.$onInit = () => {
 
-  this.updateGallery = function(){
-    galleryService.updateGallery(this.gallery._id, this.gallery);
+    $log.debug('EditGalleryController');
+    console.log(this.gallery._id, ' = this.gallery._id');
 
-  //find a way to update the model through the controller-shared galleryService method (.updateGallery grabs values from the input fields)
+    this.updateGallery = function(){
+      galleryService.updateGallery(this.gallery._id, this.gallery);
+
+      //find a way to update the model through the controller-shared galleryService method (.updateGallery grabs values from the input fields)
+    };
   };
 }
