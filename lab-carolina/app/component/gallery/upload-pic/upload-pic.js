@@ -14,6 +14,11 @@ function UploadPicController($log, picService){
 
   this.pic = {};
   this.uploadPic = function(){
-    picService.uploadPic(this.gallery, this.pic);
+    picService.uploadPic(this.gallery, this.pic)
+    .then( () => { //if it's successfully uploaded, null out the fields/prev info added
+      this.pic.name = null;
+      this.pic.desc = null;
+      this.pic.file = null;
+    });
   };
 }
