@@ -2,9 +2,9 @@
 
 module.exports = ['$q', '$log', '$http', 'Upload', 'authService', picService];
 
-function picService($q, $log, Upload, authService) {
-  $log.debug('picservice');
-
+function picService($q, $log, $http, Upload, authService){
+  $log.debug('picService');
+  
   let service = {};
 
   service.uploadPic = function(galleryData, picData){
@@ -17,6 +17,7 @@ function picService($q, $log, Upload, authService) {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json',
       };
+
       return Upload.upload({
         url,
         headers,
@@ -28,12 +29,12 @@ function picService($q, $log, Upload, authService) {
         },
       });
     })
-    .then( res => {
+    .then(res => {
       galleryData.pics.unshift(res.data);
-      $log.log('success', res.data);
+      $log.log('success\n', res.data);
       return res.data;
     })
-    .catch(err => {
+    .catch( err => {
       $log.error(err.message);
       return $q.reject(err);
     });
