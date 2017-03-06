@@ -1,0 +1,11 @@
+<div>
+  <section>name of gallery here (thumbnailContainer.gallery.name)
+    <upload-pic>{{ thumbnailContainerCtrl.gallery.name }}</upload-pic>
+  </section>
+</div>
+
+<div>
+  <section> photos render here (thumbnailContainerCtrl.gallery.pics)
+    <photos-in-partial ng-repeat="item in thumbnailContainerCtrl.gallery.pics" pic="item"></photos-in-partial>
+  </section>
+</div>
