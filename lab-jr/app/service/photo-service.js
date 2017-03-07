@@ -38,5 +38,36 @@ function photoService($q, $log, $http, Upload, authService){
     });
   };
 
+  service.deletePic = function(gallery, pic){
+    $log.debug('inside picService.deletePic()');
+
+    return authService.getToken()
+    .then(token => {
+      let url = `${__API_URL__}/api/gallery/${gallery._id}/pic/${pic._id}`;
+      let config = {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      return $http.delete(url, config);
+    })
+    .then(() => {
+      $log.log('deleted a pic!');
+
+      for(let i = 0; i < gallery.pics.length; i++){
+        let current = gallery.pics[i];
+
+        if(current._id === pic._id){
+          gallery.pics.splice(i, 1);
+          break;
+        }
+      }
+    })
+    .catch(err => {
+      $log.error('not found or couldn\t delete');
+      return $q.reject(err);
+    });
+  };
+
   return service;
 }

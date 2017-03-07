@@ -15,6 +15,7 @@ function PhotosInPartialController($log, photoService){
   this.deletePic = function(){
     $log.debug('thumbnailCtrl.deletePic()');
 
+    photoService.deletePic(this.gallery, this.pic);
     //write function inside photoService to delete a photo
-  }
+  };
 }
