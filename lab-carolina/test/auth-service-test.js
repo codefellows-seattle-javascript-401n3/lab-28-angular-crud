@@ -12,6 +12,20 @@ describe('Auth Service', function(){
     });
   });
 
+  describe('authService.logout()', () => {
+    it('should remove a token from localstorage', () => {
+      this.$window.localStorage.setItem('token', 'testertoken');
+
+      this.authService.logout()
+      .then(() => {
+        expect(this.$window.localStorage.token).toEqual(undefined);
+      });
+
+      this.$rootScope.$apply();
+    });
+  });
+
+
   describe('authService.getToken()', () => {
     it('should return a token', () => {
       this.authService.token = null;
@@ -28,4 +42,9 @@ describe('Auth Service', function(){
       this.$rootScope.$apply();
     });
   });
+
+
+
+
+
 });
