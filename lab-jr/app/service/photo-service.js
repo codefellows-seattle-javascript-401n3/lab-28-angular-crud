@@ -28,6 +28,7 @@ function photoService($q, $log, $http, Upload, authService){
       });
     })
     .then(res => {
+      console.log(res.data, ' = res.data');
       galleryId.pics.unshift(res.data);
       console.log(res.data, ' = res.data');
       return res.data;
