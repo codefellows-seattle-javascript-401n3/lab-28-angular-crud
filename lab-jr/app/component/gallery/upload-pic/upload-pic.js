@@ -9,4 +9,17 @@ module.exports = {
   }
 };
 
-function UploadPicController($log, photoService)
+function UploadPicController($log, photoService){
+  $log.debug('UploadPicController initialized');
+
+  this.pic = {};
+
+  this.uploadPic = function(){
+    photoService.uploadGalleryPic(this.gallery, this.pic)
+    .then(() => {
+      this.pic.name = null;
+      this.pic.desc = null;
+      this.pic.file = null;
+    });
+  };
+}
