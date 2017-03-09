@@ -1,0 +1,15 @@
+<section class="navbar">
+  <section class=left>
+    <img src="../../assets/cf-logo.png">
+    <h2>cfgram</h2>
+  </section>
+
+  <nav>
+    <div ng-hide="navbarCtrl.hideButtons">
+      <a href="/#/join#login"
+      ng-click="landingCtrl.showSignup=false">
+        <button class="btn-std" ng-click="navbarCtrl.logout()">logout</button>
+      </a>
+    </div>
+  </nav>
+</section>
