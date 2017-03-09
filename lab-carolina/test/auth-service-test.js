@@ -12,6 +12,33 @@ describe('Auth Service', function(){
     });
   });
 
+  describe('authService.signup()', () => {
+    it('should signup a new user', () => {
+      let testUser = {
+        username: 'Caro',
+        email: 'caro@caro',
+        password: 'caro1',
+      };
+
+      let headers = {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      };
+
+      this.$httpBackend.expectPOST('http://localhost:8000/api/signup', testUser, headers)
+      .respond(200, {
+        username: 'Caro',
+        email: 'caro@caro',
+        password: 'caro1',
+      });
+
+      this.authService.signup(testUser);
+      this.$httpBackend.flush();
+      this.$rootScope.$apply();
+    });
+  });
+
+
   describe('authService.logout()', () => {
     it('should remove a token from localstorage', () => {
       this.$window.localStorage.setItem('token', 'testertoken');
@@ -42,9 +69,5 @@ describe('Auth Service', function(){
       this.$rootScope.$apply();
     });
   });
-
-
-
-
 
 });
