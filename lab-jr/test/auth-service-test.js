@@ -1,5 +1,7 @@
 'use strict';
 
+const angular = require('angular');
+
 describe('Auth service', function(){
   beforeEach(() => {
     angular.mock.module('cfgram');
