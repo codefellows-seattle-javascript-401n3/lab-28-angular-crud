@@ -1,6 +1,7 @@
 'use strict';
 
-const angular = require('angular');
+// const angular = require('angular');
+// require('babel-polyfill');
 
 describe('Auth service', function(){
   beforeEach(() => {
@@ -14,7 +15,7 @@ describe('Auth service', function(){
   });
   describe('authService.getToken()', () => {
     it('should return a token named testy toking', () => {
-      this.$window.setItem('token', 'testy toking');
+      this.$window.localStorage.setItem('token', 'testy toking');
 
       this.authService.getToken()
       .then(token => {
@@ -25,10 +26,10 @@ describe('Auth service', function(){
       this.$rootScope.$apply();
     });
 
-    it('should return "token not found"', () => {
+    it('should return "no token found"', () => {
       this.authService.getToken()
       .catch(err => {
-        expect(err).toEqual(new Error('token not found'));
+        expect(err.message).toEqual('no token found');
       });
 
       this.$rootScope.$apply();
