@@ -2,10 +2,13 @@
   <h2>Welcome!</h2>
 
   <create-gallery></create-gallery>
+
+  <input ng-model="homeCtrl.searchTerm" type="text" placeholder="search">
+
     <ul>
-      <gallery-item ng-repeat="item in homeCtrl.galleries"
+      <gallery-item ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.searchTerm"
           gallery="item"
-          delete-done="homeCtrl.galleryDeleteDone(gallery)" 
+          delete-done="homeCtrl.galleryDeleteDone(gallery)"
           ng-click="homeCtrl.currentGallery=item">
       </gallery-item>
     </ul>
