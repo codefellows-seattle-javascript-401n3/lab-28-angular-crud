@@ -6,7 +6,7 @@
         class="btn pull-right btn-default navbar-btn btn-logout">
         logout
       </button>
-      <h3> Today is: {{ navbarCtrl.today | date:navbarCtrl.dateFormat : short }} </h3>
+      <h3> {{navbarCtrl.today | date:'medium' | uppercase}} </h3>
    </div>
   </div>
 </nav>
