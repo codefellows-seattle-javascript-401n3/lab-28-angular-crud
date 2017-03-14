@@ -17,6 +17,8 @@ function NavbarController($log, $location, $rootScope, authService) {
       this.hideButtons = true;
     }
 
+    this.today = new Date;
+
     if (path !== '/join'){
       this.hideButtons = false;
       authService.getToken()

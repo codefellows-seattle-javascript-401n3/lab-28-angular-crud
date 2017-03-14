@@ -22,7 +22,7 @@ function HomeController($log, $rootScope, galleryService) {
       this.currentGallery = null;
     }
   };
-  
+
   this.deleteGallery = function(galleryId) {
     galleryService.deleteGallery(galleryId)
     .then( () => {
