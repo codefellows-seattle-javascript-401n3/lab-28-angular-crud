@@ -2,11 +2,16 @@
   <h2>Welcome!</h2>
 
   <create-gallery></create-gallery>
+
+  <input ng-model="homeCtrl.searchTerm" type="text" placeholder="search">
+
     <ul>
-      <li ng-repeat="gallery in homeCtrl.galleries">
-        <p>{{gallery.name}}</p>
-        <p>Description: {{gallery.desc}}</p>
-        <button ng-click='homeCtrl.deleteGallery(gallery._id)'>Delete Gallery</button>
-      </li>
+      <gallery-item ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.searchTerm | orderBy: 'name' | limitTo: 5"
+          gallery="item"
+          delete-done="homeCtrl.galleryDeleteDone(gallery)"
+          ng-click="homeCtrl.currentGallery=item">
+      </gallery-item>
     </ul>
+
+    <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"></thumbnail-container>
 </section>

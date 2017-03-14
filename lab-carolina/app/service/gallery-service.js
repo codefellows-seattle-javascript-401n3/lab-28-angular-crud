@@ -45,6 +45,7 @@ function galleryService($q, $log, $http, authService) {
       let config = {
         headers: {
           Accept: 'application/json',
+          'Content-Type': 'applicatin/json',
           Authorization: `Bearer ${token}`,
         },
       };
@@ -60,6 +61,13 @@ function galleryService($q, $log, $http, authService) {
     });
   };
 
+  service.deleteGallerys = function(galleryId) {
+    galleryService.deleteGallery(galleryId)
+    .then( () => {
+      this.fetchGalleries();
+      $log.debug('deleted gallery');
+    });
+  };
 
   service.deleteGallery = function(galleryID){
     return authService.getToken()
@@ -67,14 +75,53 @@ function galleryService($q, $log, $http, authService) {
       let url = `${__API_URL__}/api/gallery/${galleryID}`;
       let config = {
         headers: {
-          Accept: 'application/json',
+          // Accept: 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };
       return $http.delete(url, config);
     })
-    .then( () => {
-      $log.log('Deleted Gallery');
+    .then( res => {
+      for (let i=0; i<service.galleries.length; ++i){
+        let current = service.galleries[i];
+        if (current._id === galleryID){
+          service.galleries.splice(i, 1);
+          break;
+        }
+      }
+    })
+     .catch(err => {
+       $log.error(err.message);
+       return $q.reject(err);
+     });
+  };
+
+
+  service.updateGallery = function(galleryID, galleryData){
+    $log.debug('galleryService.updateGallery()');
+
+    return authService.getToken()
+    .then( token => {
+      let url = `${__API_URL__}/api/gallery/${galleryID}`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      };
+      return $http.put(url, galleryData, config);
+    })
+    .then(res => {
+      for(let i=0; i < service.galleries.length; i++){
+        let current = service.galleries[i];
+        if(current._id === galleryID){
+          service.galleries[i] = res.data;
+          break;
+        }
+      }
+
+      return res.data;
     })
     .catch(err => {
       $log.error(err.message);

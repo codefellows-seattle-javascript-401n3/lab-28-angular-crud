@@ -25,6 +25,7 @@
     "jasmine": true
   },
   "globals": {
+    "angular": "true",
     "describe": false,
     "it": false,
     "beforeEach": false,
