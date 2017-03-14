@@ -1,6 +1,7 @@
 navbar {
-  background-color: grey;
-  min-width: 100%;
+  background-color: grey * .5;
+  width: 54%;
+  color: white;
 
   .navbar {
     display: flex;
@@ -10,6 +11,7 @@ navbar {
 
     button {
       margin: 1em;
+      background: grey;
     }
   }
 

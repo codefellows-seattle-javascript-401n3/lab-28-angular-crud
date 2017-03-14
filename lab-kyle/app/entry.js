@@ -7,8 +7,9 @@ const angular = require('angular')
 const camelcase = require('camelcase')
 const pascalcase = require('pascalcase')
 const uiRouter = require('angular-ui-router')
+const ngFileUpload = require('ng-file-upload')
 
-const cfgram = angular.module('cfgram', [uiRouter])
+const cfgram = angular.module('cfgram', [uiRouter, ngFileUpload])
 
 let context = require.context('./config/', true, /\.js$/)
 context.keys().forEach( path => {
@@ -35,3 +36,6 @@ context.keys().forEach( key => {
   let module = context(key)
   cfgram.component(name, module)
 })
+
+context = require.context('./filter/', true, /\.js$/)
+context.keys().forEach( key => cfgram.filter(camelcase(path.basename(key, '.js')), context(key)))

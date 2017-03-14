@@ -1,3 +1,6 @@
+# ingore env files
+.env
+
 # ignore db directory
 db
 

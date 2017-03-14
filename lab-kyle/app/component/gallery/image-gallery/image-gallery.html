@@ -1,0 +1,6 @@
+<section class="image-gallery">
+  <div ng-repeat="image in imageGalleryCtrl.images">
+    <img ng-src="{{image.imageURI}}" alt="{{image.desc}}">
+    <button ng-click="imageGalleryCtrl.deleteImage(image._id)">delete</button>
+  </div>
+</section>

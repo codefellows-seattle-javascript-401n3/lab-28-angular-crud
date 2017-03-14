@@ -1,26 +1,13 @@
 input {
   width: 90%;
-  margin-left: 5%;
+  margin-left: 1em;
 }
 
 .login-form {
-  margin-top: 1em;
-  margin-left: 5%;
-  width: 90%;
+  margin: 1em;
+  min-height: 15em;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-bottom: 2em;
 
-  div {
-    margin: 1em 0em;
-  }
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 15em;
-  width: 100%;
 }

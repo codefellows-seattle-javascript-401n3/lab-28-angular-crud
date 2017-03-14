@@ -1,0 +1,16 @@
+<li class="gallery-item" ng-show="editGalleryCtrl.update">
+  <form ng-submit="editGalleryCtrl.updateGallery()">
+
+    <fieldset class="input">
+      <span>Name: </span>
+      <input type="text" placeholder="name" ng-model="editGalleryCtrl.gallery.name">
+    </fieldset>
+
+    <fieldset class="input">
+      <span>Desc: </span>
+      <input type="text" placeholder="description" ng-model="editGalleryCtrl.gallery.desc">
+    </fieldset>
+
+    <button class="btn-std" type="submit">update</button>
+  </form>
+</li>

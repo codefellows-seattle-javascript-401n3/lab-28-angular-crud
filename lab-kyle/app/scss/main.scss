@@ -38,9 +38,16 @@ img {
   margin: 1em;
 }
 
+ul {
+  padding-left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .btn-std {
   height: 3em;
-  width: 12em;
+  width: 8em;
   color: white;
   background-color: grey * .5;
   align-self: flex-end;

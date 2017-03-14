@@ -1,4 +1,10 @@
 .home {
-  width: 100%;
-  color: darkgreen;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+h3 {
+  display: flex;
+  justify-content: space-around;
 }

@@ -1,3 +1,5 @@
+/* global __API_URL__ */
+
 'use strict'
 
 module.exports = ['$q', '$log', '$http', 'authService', galleryService]
@@ -73,14 +75,33 @@ function galleryService($q, $log, $http, authService) {
         }
         return $http.delete(url, config)
       })
-      .then(() => {
-        return service.galleries.map(function(gallery) {
-          if (gallery._id != id) return gallery
-        })
+      .catch( err => {
+        $log.error(err.message)
+        return $q.reject(err)
       })
-      .then(galleries => {
-        service.galleries = galleries
-        return galleries
+  }
+
+  service.updateGallery = function(id, data) {
+    $log.debug('galleryService.updateGallery()')
+
+    return authService.getToken()
+      .then( token => {
+        let url = `${__API_URL__}/api/gallery/${id}`
+        let config = {
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+          }
+        }
+        return $http.put(url, data, config)
+      })
+      .then(updated => {
+        for (var i = 0; i < service.galleries.length; i++) {
+          if (service.galleries[i]._id === updated._id) {
+            service.galleries[i] === updated
+          }
+        }
+        return updated
       })
       .catch( err => {
         $log.error(err.message)

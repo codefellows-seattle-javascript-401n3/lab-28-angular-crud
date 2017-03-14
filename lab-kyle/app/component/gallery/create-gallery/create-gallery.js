@@ -13,26 +13,9 @@ function CreateGalleryController($log, galleryService) {
 
   this.createGallery = function() {
     galleryService.createGallery(this.gallery)
-      .then( () => {
+      .then(() => {
         this.gallery.name = null
         this.gallery.desc = null
-      })
-  }
-
-  this.fetchGalleries = function() {
-    galleryService.fetchGalleries()
-      .then( res => {
-        this.galleries = res;
-      })
-  }
-
-  this.deleteGallery = function(id){
-    galleryService.deleteGallery(id)
-      .then(res => {
-        $log.log('gallery deleted')
-        this.galleries = res.filter(function(el) {
-          if (el) return el
-        })
       })
   }
 }

@@ -1,0 +1,27 @@
+<section class="image-upload" ng-if="imageUploadCtrl.upload">
+
+  <form ng-submit="imageUploadCtrl.uploadImage()">
+
+    <fieldset class="input">
+      <span>Name: </span>
+      <input type="text" placeholder="name" ng-model="imageUploadCtrl.image.name">
+    </fieldset>
+
+    <fieldset class="input">
+      <span>Desc: </span>
+      <input type="text" placeholder="description" ng-model="imageUploadCtrl.image.desc">
+    </fieldset>
+
+    <div>
+      <p class="grab-img"
+       ngf-select
+       ng-model="imageUploadCtrl.image.file">
+       select a pic to upload
+     </p>
+    </div>
+
+    <button class="btn-std" type="submit">upload</button>
+
+  </form>
+
+</section>

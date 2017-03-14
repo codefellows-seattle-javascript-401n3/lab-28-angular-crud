@@ -1,4 +1,15 @@
 <section class="home">
-  <h2>Home page of awesomenss</h2>
   <create-gallery></create-gallery>
+
+  <section>
+    <h3>Galleries</h3>
+    <input type="text" ng-model="homeCtrl.regExp">
+    <ul>
+      <gallery-item ng-repeat="gallery in homeCtrl.galleries |
+          orderBy : 'created' |
+          limitTo: 10 |
+          fuzzySearch: homeCtrl.regExp"
+          gallery="gallery"></gallery-item>
+    </ul>
+  </section>
 </section>

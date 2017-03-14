@@ -1,3 +1,5 @@
+/* global __API_URL__ */
+
 'use strict'
 
 module.exports = ['$q', '$log', '$http', '$window', authService]
@@ -48,13 +50,14 @@ function authService($q, $log, $http, $window) {
     let config = {
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
       }
     }
 
     return $http.post(url, user, config)
             .then( res => {
               $log.log('success', res.data)
+              console.log(res.data);
               return setToken(res.data)
             })
             .catch( err => {
