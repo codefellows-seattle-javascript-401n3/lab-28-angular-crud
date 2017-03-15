@@ -31,7 +31,7 @@ describe('galleryService', function() {
         'Authorization': `Bearer ${this.testToken}`
       };
 
-      this.$httpBackend.expectPost('http://localhost:8080/api/gallery', galleryData, headers).respond(200, {
+      this.$httpBackend.expectPOST('http://localhost:3000/api/gallery', galleryData, headers).respond(200, {
         _id: '1234',
         username: 'jrtest',
         name: galleryData.name,
