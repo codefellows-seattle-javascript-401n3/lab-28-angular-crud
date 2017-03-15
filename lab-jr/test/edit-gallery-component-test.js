@@ -3,14 +3,13 @@
 describe('edit-gallery-component', function(){
   beforeEach(() => {
     angular.mock.module('cfgram');
-    angular.mock.inject(($rootScope, $window, $componentController, $httpBackend, authService, galleryService) => {
+    angular.mock.inject(($rootScope, $window, $componentController, $httpBackend, authService) => {
 
       this.$rootScope = $rootScope;
       this.$window = $window;
       this.$componentController = $componentController;
       this.$httpBackend = $httpBackend;
       this.authService = authService;
-      this.galleryService = galleryService;
     });
 
     this.testToken = 'testToken';
@@ -23,6 +22,9 @@ describe('edit-gallery-component', function(){
   });
 
   describe('editGallery.updateGallery()', () => {
+    console.log('$http:', this.$httpBackend);
+
+
     let url = 'http://localhost:3000/api/gallery/12345';
 
     let updatedGallery = {
@@ -37,7 +39,23 @@ describe('edit-gallery-component', function(){
       'Content-Type': 'application/json;charset=utf-8'
     };
 
-    this.galleryService.updateGallery();
+    let mockBindings = {
+      gallery: {
+        _id: '12345',
+        name: 'updated name',
+        desc: 'updated desc'
+      },
+      update: true,
+    };
+
+    //mock an updateGallery call to a/ use updatedGallery object?
+    let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
+    editGalleryCtrl.updateGallery();
     this.$httpBackend.expectPUT(url, updatedGallery, headers).respond(200);
+
+
+
+    this.$httpBackend.flush();
+    this.$rootScope.$apply();
   });
 });

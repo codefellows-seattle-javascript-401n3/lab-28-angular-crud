@@ -4,6 +4,12 @@ webpack.entry = {};
 module.exports = function(config) {
   config.set({
     webpack,
+    client: {
+      captureConsole: true,
+      // mocha: {
+      //   bail: true
+      // }
+    },
     port: 9876,
     colors: true,
     basePath: '',
