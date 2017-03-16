@@ -3,12 +3,15 @@
 describe('edit-gallery-component', function(){
   beforeEach(() => {
     angular.mock.module('cfgram');
-    angular.mock.inject(($rootScope, $window, $componentController, $httpBackend, authService) => {
+    angular.mock.inject(($rootScope, $window, $componentController, $httpBackend, authService, galleryService) => {
       this.$rootScope = $rootScope;
       this.$componentController = $componentController;
       this.$httpBackend = $httpBackend;
       this.authService = authService;
+      this.$window = $window;
+      this.galleryService = galleryService;
     });
+    this.$window.localStorage.setItem('token', 'test token');
   });
 
   it('should have the mock bindings', () => {
@@ -31,8 +34,8 @@ describe('edit-gallery-component', function(){
       let url = 'http://localhost:3000/api/gallery/12345';
       let headers = {
         'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=utf-8',
-        Authorization: `Bearer ${this.testToken}`
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer test token'
       };
 
       this.$httpBackend.expectPUT(url, {
@@ -40,6 +43,7 @@ describe('edit-gallery-component', function(){
       name: 'updated name',
       desc: 'updated description'
       }, headers).respond(200);
+      this.$httpBackend.expectGET().respond(200);
 
       let mockBindings = {
         gallery: {
@@ -49,8 +53,10 @@ describe('edit-gallery-component', function(){
         },
       };
       let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
+      editGalleryCtrl.$onInit();
       editGalleryCtrl.gallery.name = 'updated name';
       editGalleryCtrl.gallery.desc = 'updated description';
+      console.log(editGalleryCtrl.updateGallery);
       console.log(editGalleryCtrl);
       editGalleryCtrl.updateGallery();
       // let updatedGallery = {
