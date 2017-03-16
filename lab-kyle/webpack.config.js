@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const dotenv = require('dotenv')
 
-// const production = process.env.NODE_ENV === 'production'
+const production = process.env.NODE_ENV === 'production'
 
 dotenv.load()
 
@@ -12,12 +12,13 @@ plugins = [
   new HTMLPlugin({template: `${__dirname}/app/index.html`}),
   new webpack.DefinePlugin({
     __API_URL__: JSON.stringify(process.env.API_URL),
-    // __DEBUG__: JSON.stringify(!production)
+    __DEBUG__: JSON.stringify(!production)
   })
 ]
 
 module.exports = {
   entry: `${__dirname}/app/entry.js`,
+  devtool: production ? false : 'eval',
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/build`

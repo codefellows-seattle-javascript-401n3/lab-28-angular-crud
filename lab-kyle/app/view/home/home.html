@@ -1,15 +1,26 @@
 <section class="home">
+
+  <section class="langs" uib-dropdown>
+    <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+      Languages <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" uib-dropdown-menu>
+      <li><button class="btn btn-primary" ng-click="homeCtrl.changeLanguage('en')">English</button></li>
+      <li><button class="btn btn-success" ng-click="homeCtrl.changeLanguage('de')">German</button></li>
+      <li><button class="btn btn-danger" ng-click="homeCtrl.changeLanguage('jp')">Japanese</button></li>
+    </ul>
+  </section>
+
   <create-gallery></create-gallery>
 
   <section>
     <h3>Galleries</h3>
     <input type="text" ng-model="homeCtrl.regExp">
-    <ul>
-      <gallery-item ng-repeat="gallery in homeCtrl.galleries |
-          orderBy : 'created' |
-          limitTo: 10 |
-          fuzzySearch: homeCtrl.regExp"
-          gallery="gallery"></gallery-item>
-    </ul>
+    <gallery-item ng-repeat="gallery in homeCtrl.galleries |
+    orderBy : 'created' |
+    limitTo: 10 |
+    fuzzySearch: homeCtrl.regExp"
+    gallery="gallery"
+    ></gallery-item>
   </section>
 </section>

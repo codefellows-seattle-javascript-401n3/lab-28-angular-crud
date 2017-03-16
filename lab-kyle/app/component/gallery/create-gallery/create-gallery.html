@@ -3,12 +3,12 @@
     class="gallery-form"
     ng-submit="createGalleryCtrl.createGallery()">
 
-    <h2>Create a new gallery</h2>
+    <h2>{{ 'CREATE' | translate}}</h2>
 
-    <input placeholder="name" class="input-std" type="text" ng-model="createGalleryCtrl.gallery.name" required>
+    <input placeholder="{{ 'NAME' | translate }}" class="input-std" type="text" ng-model="createGalleryCtrl.gallery.name" required>
 
-    <input placeholder="description" class="input-std" type="text" ng-model="createGalleryCtrl.gallery.desc" required>
+    <input placeholder="{{ 'DESC' | translate }}" class="input-std" type="text" ng-model="createGalleryCtrl.gallery.desc" required>
 
-    <button class="btn-std" type="submit">create gallery</button>
+    <button class="btn-std" type="submit">{{ 'CREATE_GALLERY' | translate }}</button>
   </form>
 </section>

@@ -6,24 +6,6 @@ gallery-item {
     margin: 1em;
   }
 
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    border-bottom: 1px solid black;
-  }
-
-  li {
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: lightgrey;
-  }
-
   .desc {
     width: 90%;
   }

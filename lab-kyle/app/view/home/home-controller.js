@@ -2,9 +2,9 @@
 
 require('./_home.scss')
 
-module.exports = ['$log', '$rootScope', 'authService', 'galleryService', HomeController]
+module.exports = ['$log', '$rootScope', '$translate', 'authService', 'galleryService', HomeController]
 
-function HomeController($log, $rootScope, authService, galleryService) {
+function HomeController($log, $rootScope, $translate, authService, galleryService) {
   $log.debug('HomeController')
 
   this.fetchGalleries = function() {
@@ -17,6 +17,10 @@ function HomeController($log, $rootScope, authService, galleryService) {
   this.fetchGalleries()
 
   $rootScope.$on('$locationChangeSuccess', () => {
-    this.fetchGalleries();
+    this.fetchGalleries()
   })
+
+  this.changeLanguage = function(langKey) {
+    $translate.use(langKey)
+  }
 }

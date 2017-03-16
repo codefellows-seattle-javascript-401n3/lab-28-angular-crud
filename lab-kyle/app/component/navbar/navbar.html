@@ -8,7 +8,7 @@
     <div ng-hide="navbarCtrl.hideButtons">
       <a href="/#/join#login"
       ng-click="landingCtrl.showSignup=false">
-        <button class="btn-std" ng-click="navbarCtrl.logout()">logout</button>
+        <button class="btn btn-warning" ng-click="navbarCtrl.logout()">{{ 'LOGOUT' | translate }}</button>
       </a>
     </div>
   </nav>

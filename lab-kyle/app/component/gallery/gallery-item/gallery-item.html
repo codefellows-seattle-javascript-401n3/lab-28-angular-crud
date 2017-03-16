@@ -1,28 +1,29 @@
-<li class="gallery-item">
+<uib-accordion>
+  <div uib-accordion-group class="panel-default" heading="{{ galleryItemCtrl.gallery.name }}">
 
-  <div ng-if="!galleryItemCtrl.update && !galleryItemCtrl.upload">
-    <section class="inline">
-      <p>Name: {{ galleryItemCtrl.gallery.name | uppercase }}</p>
-      <p>Images: {{ galleryItemCtrl.gallery.pics.length | number}}</p>
-      <p>Date Created:  {{ galleryItemCtrl.gallery.created | date}}</p>
-    </section>
-    <p class="desc">description: {{galleryItemCtrl.gallery.desc}}</p>
-    <thumbnail images="galleryItemCtrl.gallery.pics" gallery="galleryItemCtrl.gallery"></thumbnail>
-    <section class="buttons">
-      <span><button class="btn-std" type="button" ng-click="galleryItemCtrl.update = !galleryItemCtrl.update">update</button></span>
-      <span><button class="btn-std" type="button" ng-click="galleryItemCtrl.upload = !galleryItemCtrl.upload">upload</button></span>
-      <span><button class="btn-std" type="button" ng-click="galleryItemCtrl.deleteGallery()">delete</button></span>
-    </section>
+    <div ng-if="!galleryItemCtrl.update && !galleryItemCtrl.upload">
+      <section class="inline">
+        <p>Name: {{ galleryItemCtrl.gallery.name | uppercase }}</p>
+        <p>Images: {{ galleryItemCtrl.gallery.pics.length | number }}</p>
+        <p>Date Created: {{ galleryItemCtrl.gallery.created | date }}</p>
+      </section>
+      <p class="desc">description: {{ galleryItemCtrl.gallery.desc }}</p>
+      <thumbnail images="galleryItemCtrl.gallery.pics" gallery="galleryItemCtrl.gallery"></thumbnail>
+      <section class="buttons">
+        <span><button class="btn-std" type="button" ng-click="galleryItemCtrl.update = !galleryItemCtrl.update">update</button></span>
+        <span><button class="btn-std" type="button" ng-click="galleryItemCtrl.upload = !galleryItemCtrl.upload">upload</button></span>
+        <span><button class="btn-std" type="button" ng-click="galleryItemCtrl.deleteGallery()">delete</button></span>
+      </section>
+    </div>
 
+    <edit-gallery ng-if="galleryItemCtrl.update"
+                  gallery="galleryItemCtrl.gallery"
+                  update="galleryItemCtrl.update">
+    </edit-gallery>
+
+    <image-upload ng-if="galleryItemCtrl.upload"
+                  gallery="galleryItemCtrl.gallery"
+                  upload="galleryItemCtrl.upload">
+    </image-upload>
   </div>
-
-  <edit-gallery ng-if="galleryItemCtrl.update"
-                gallery="galleryItemCtrl.gallery"
-                update="galleryItemCtrl.update">
-  </edit-gallery>
-
-  <image-upload ng-if="galleryItemCtrl.upload"
-                gallery="galleryItemCtrl.gallery"
-                upload="galleryItemCtrl.upload">
-  </image-upload>
-</li>
+</uib-accordion>
