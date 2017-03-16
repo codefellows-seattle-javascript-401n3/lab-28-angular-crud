@@ -10,6 +10,9 @@ module.exports = function(config) {
       //   bail: true
       // }
     },
+    browserConsoleLogOptions: {
+      level: 'log'
+    },
     port: 9876,
     colors: true,
     basePath: '',

@@ -22,40 +22,40 @@ describe('edit-gallery-component', function(){
   });
 
   describe('editGallery.updateGallery()', () => {
-    console.log('$http:', this.$httpBackend);
+    it('should use updateGallery to update Gallery object', () => {
+      let url = 'http://localhost:3000/api/gallery/12345';
 
-
-    let url = 'http://localhost:3000/api/gallery/12345';
-
-    let updatedGallery = {
-      _id: '12345',
-      name: 'updated name',
-      desc: 'updated desc'
-    };
-
-    let headers = {
-      'Authorization': `Bearer ${this.testToken}`,
-      'Accept': 'application/json',
-      'Content-Type': 'application/json;charset=utf-8'
-    };
-
-    let mockBindings = {
-      gallery: {
+      let updatedGallery = {
         _id: '12345',
         name: 'updated name',
         desc: 'updated desc'
-      },
-      update: true,
-    };
+      };
 
-    //mock an updateGallery call to a/ use updatedGallery object?
-    let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
-    editGalleryCtrl.updateGallery();
-    this.$httpBackend.expectPUT(url, updatedGallery, headers).respond(200);
+      let headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: `Bearer ${this.testToken}`
+      };
+
+      this.$httpBackend.expectPUT(url, updatedGallery, headers).respond(200);
+
+      let mockBindings = {
+        gallery: {
+          _id: '12345',
+          name: 'updated name',
+          desc: 'updated desc'
+        }
+      };
 
 
+      let editGalleryCtrl = this.$componentController('galleryService', null, mockBindings);
+      console.log('$componentController for editGallery:', editGalleryCtrl.updateGallery);
+      editGalleryCtrl.gallery.name = 'updated name';
+      editGalleryCtrl.gallery.desc = 'updated desc';
+      editGalleryCtrl.updateGallery();
 
-    this.$httpBackend.flush();
-    this.$rootScope.$apply();
+      this.$httpBackend.flush();
+      this.$rootScope.$apply();
+    });
   });
 });
