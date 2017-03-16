@@ -1,0 +1,21 @@
+<section>
+  <form ng-submit="uploadPicCtrl.uploadPic()" novalidate>
+    <h1>upload form</h1>
+
+    <fieldset>
+      <input ng-model="uploadPicCtrl.pic.name" placeholder="name"></input>
+      <input ng-model="uploadPicCtrl.pic.desc" placeholder="description"></input>
+    </fieldset>
+
+    <div>
+      {{ gallery }}
+    </div>
+
+    <div>
+      <p ngf-select ng-model="uploadPicCtrl.pic.file">select file from fs
+      </p>
+
+      <button>ugly upload "button"</button>
+    </div>
+  </form>
+</section>

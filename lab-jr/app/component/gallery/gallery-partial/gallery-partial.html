@@ -1,0 +1,9 @@
+<li>
+  <h2> galleryPartialCtrl.gallery.name is one-way bound {{ galleryPartialCtrl.gallery.name }} </h2>
+  <h2> galleryPartialCtrl.gallery.desc : {{ galleryPartialCtrl.gallery.desc}}</h2>
+  <h2> galleryPartialCtrl.gallery._id : {{ galleryPartialCtrl.gallery._id}}</h2>
+
+<thumbnail-container gallery="galleryPartialCtrl.gallery"></thumbnail-container>
+  <edit-gallery gallery="galleryPartialCtrl.gallery"></edit-gallery>
+  <button ng-click="galleryPartialCtrl.deleteGallery()">delete gallery</button>
+</li>
