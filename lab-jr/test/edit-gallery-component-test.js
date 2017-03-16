@@ -51,6 +51,7 @@ describe('edit-gallery-component', function(){
       let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
       editGalleryCtrl.gallery.name = 'updated name';
       editGalleryCtrl.gallery.desc = 'updated description';
+      console.log(editGalleryCtrl);
       editGalleryCtrl.updateGallery();
       // let updatedGallery = {
       //   _id: '12345',
