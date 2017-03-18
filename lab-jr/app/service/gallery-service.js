@@ -113,8 +113,12 @@ function galleryService($q, $log, $http, authService){
       };
       return $http.put(url, updatedGallery, config);
     })
-    .then(() => {
-      service.fetchGalleries();
+    .then(res => {
+      for(let i = 0; i < service.galleries.length; i++) {
+        if(service.galleries[i]._id === galleryId) {
+          service.galleries[i] = res.data;
+        }
+      }
     })
     .catch(err => {
       $log.error(err.message);

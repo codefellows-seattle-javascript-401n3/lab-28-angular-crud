@@ -20,14 +20,14 @@ describe('edit-gallery-component', function(){
         name: 'test gallery name',
         desc: 'test gallery desc'
       }
-  };
+    };
 
-  let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
-  expect(editGalleryCtrl.gallery.name).toBe('test gallery name');
-  expect(editGalleryCtrl.gallery.desc).toBe('test gallery desc');
+    let editGalleryCtrl = this.$componentController('editGallery', null, mockBindings);
+    expect(editGalleryCtrl.gallery.name).toBe('test gallery name');
+    expect(editGalleryCtrl.gallery.desc).toBe('test gallery desc');
 
-  this.$rootScope.$apply();
-});
+    this.$rootScope.$apply();
+  });
 
   describe('editGallery.updateGallery()', () => {
     it('should use updateGallery to update Gallery object', () => {
@@ -39,9 +39,9 @@ describe('edit-gallery-component', function(){
       };
 
       this.$httpBackend.expectPUT(url, {
-      _id: '12345',
-      name: 'updated name',
-      desc: 'updated description'
+        _id: '12345',
+        name: 'updated name',
+        desc: 'updated description'
       }, headers).respond(200);
       this.$httpBackend.expectGET().respond(200);
 

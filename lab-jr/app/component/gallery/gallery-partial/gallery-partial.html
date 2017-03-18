@@ -1,7 +1,8 @@
 <li>
-  <h2> galleryPartialCtrl.gallery.name is one-way bound {{ galleryPartialCtrl.gallery.name }} </h2>
-  <h2> galleryPartialCtrl.gallery.desc : {{ galleryPartialCtrl.gallery.desc}}</h2>
+  <h2> galleryPartialCtrl.gallery.name is one-way bound  and filtered by lowercase : {{ galleryPartialCtrl.gallery.name | lowercase}} </h2>
+  <h2> galleryPartialCtrl.gallery.desc filtered by uppercase : {{ galleryPartialCtrl.gallery.desc | uppercase }}</h2>
   <h2> galleryPartialCtrl.gallery._id : {{ galleryPartialCtrl.gallery._id}}</h2>
+  <h2> galleryPartialCtrl.gallery.created filtered by date: DD/MM/YYYY : {{ galleryPartialCtrl.gallery.created | date : DD/MM/YYYY }}</h2>
 
 <thumbnail-container gallery="galleryPartialCtrl.gallery"></thumbnail-container>
   <edit-gallery gallery="galleryPartialCtrl.gallery"></edit-gallery>

@@ -1,7 +1,8 @@
 <section>
+  <input ng-model="homeCtrl.searchTerm"/>
   <create-gallery></create-gallery>
   <ul>
-    <gallery-partial ng-repeat="item in homeCtrl.galleries" gallery="item"></gallery-partial>
+    <gallery-partial ng-repeat="item in homeCtrl.galleries | fuzzySearch : homeCtrl.searchTerm" gallery="item"></gallery-partial>
     <!-- <li ng-repeat="gallery in homeCtrl.galleries">
       <span>name: {{ gallery.name }}</span>
       <span>description: {{ gallery.desc }}</span>
