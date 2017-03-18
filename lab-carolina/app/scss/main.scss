@@ -1,3 +1,9 @@
+// :::: BOOTSTRAP COMPONENTS :::: //
+@import "lib/bootstrap/custom-bootstrap";
+
+@import "lib/base/reset";
+@import "lib/base/base";
+
 html, body {
-  background: #ffdab9;
+  background: #F5D5BC;
 }

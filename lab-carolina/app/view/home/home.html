@@ -1,12 +1,21 @@
 <section class="home">
+  <navbar></navbar>
+
   <h2>Welcome!</h2>
 
   <create-gallery></create-gallery>
-    <ul>
-      <li ng-repeat="gallery in homeCtrl.galleries">
-        <p>{{gallery.name}}</p>
-        <p>Description: {{gallery.desc}}</p>
-        <button ng-click='homeCtrl.deleteGallery(gallery._id)'>Delete Gallery</button>
-      </li>
-    </ul>
+
+  <input class="fuzzy-search" ng-model="homeCtrl.searchTerm" type="text" placeholder="Search Gallery">
+
+  <ul>
+    <uib-accordion>
+      <gallery-item ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.searchTerm | orderBy: 'name' | limitTo: 5"
+        gallery="item"
+        delete-done="homeCtrl.galleryDeleteDone(gallery)"
+        ng-click="homeCtrl.currentGallery=item">
+      </gallery-item>
+    </uib-accordion>
+  </ul>
+
+    <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"></thumbnail-container>
 </section>

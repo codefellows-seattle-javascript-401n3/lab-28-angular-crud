@@ -1,0 +1,8 @@
+<li uib-accordion-group class="panel-default" heading="{{galleryItemCtrl.gallery.name}}">
+  <div class="current-item" ng-if="!galleryItemCtrl.showEditGallery">
+    <p> {{galleryItemCtrl.gallery.desc}}</p>
+    <span ng-click="galleryItemCtrl.showEditGallery = !galleryItemCtrl.showEditGallery">Update</span>
+    <span ng-click="galleryItemCtrl.deleteGallery()">Delete</span>
+    <edit-gallery ng-if="galleryItemCtrl.showEditGallery" gallery="galleryItemCtrl.gallery"> </edit-gallery>
+  </div>
+</li>

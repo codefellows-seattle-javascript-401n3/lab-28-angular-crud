@@ -1,37 +1,29 @@
-h2 {
-  margin-left: 45%;
-  color: #FF6666
-}
-
-ul {
-  margin-top: 5%;
-  border-radius: 5%;
-  width: 80%;
-  margin-left: 10%;
-  display: flex;
-  flex-direction: column;
-}
-
-li{
-  text-align: center;
-  list-style: none;
-  border: 5px solid #FF6666;
-  border-radius: 10px;
-  color: #FF6666;
-  font-size: 16px;
-  font-family: calibri;
+.home{
+  background-color: #759EA4;
+  margin: 0 20%;
+  padding: 0 1%;
 }
 
 fieldset {
-  color: #FF6666;
-  font-family: papyrus;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  color: #01395E;
+  margin-left: 25%;
 }
 
-.navbar-brand {
-  text-decoration: none;
-  color: #FFB8A0;
-  font-weight: bold;
+
+h2, .gallery-name, p {
+  text-align: center;
+  color: #A0CDB6;
+}
+
+.fuzzy-search {
+  margin-left: 35%;
+}
+
+.upload-pic {
+  margin-right: 10%;
+}
+
+.select-image{
+align-items: center;
+color: blue;
 }
