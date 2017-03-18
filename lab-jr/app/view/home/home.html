@@ -1,0 +1,13 @@
+<section>
+  <input ng-model="homeCtrl.searchTerm"/>
+  <create-gallery></create-gallery>
+  <ul>
+    <gallery-partial ng-repeat="item in homeCtrl.galleries | fuzzySearch : homeCtrl.searchTerm" gallery="item"></gallery-partial>
+    <!-- <li ng-repeat="gallery in homeCtrl.galleries">
+      <span>name: {{ gallery.name }}</span>
+      <span>description: {{ gallery.desc }}</span>
+      <span>id: {{ gallery._id }}</span>
+    </li> -->
+  </ul>
+    <!-- set currentGallery inside home controller! -->
+</section>
