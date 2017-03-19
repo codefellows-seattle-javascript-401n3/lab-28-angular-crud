@@ -1,5 +1,5 @@
-<div>
-    <li uib-accordion-group>
+<div uib-accordion-group heading="{{galleryPartialCtrl.gallery.name | uppercase}}" class="gallery-item component">
+    <li>
       <h2> galleryPartialCtrl.gallery.name is one-way bound  and filtered by lowercase : {{ galleryPartialCtrl.gallery.name | lowercase}} </h2>
       <h2> galleryPartialCtrl.gallery.desc filtered by uppercase : {{ galleryPartialCtrl.gallery.desc | uppercase }}</h2>
       <h2> galleryPartialCtrl.gallery._id : {{ galleryPartialCtrl.gallery._id}}</h2>
