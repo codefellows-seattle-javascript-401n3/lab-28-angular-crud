@@ -1,0 +1,7 @@
+<section>
+  <input ng-model="homeCtrl.searchTerm"/>
+  <create-gallery></create-gallery>
+  <uib-accordion>
+    <gallery-partial ng-repeat="item in homeCtrl.galleries | fuzzySearch : homeCtrl.searchTerm" gallery="item"></gallery-partial>
+  </uib-accordion>
+</section>
